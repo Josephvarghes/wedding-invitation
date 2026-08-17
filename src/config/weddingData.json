@@ -1,0 +1,83 @@
+{
+  "couple": {
+    "bride": "Sophia Sterling",
+    "groom": "Alexander Vance",
+    "tagline": "Together is a wonderful place to be",
+    "date": "2026-11-28T16:00:00",
+    "heroImage": "/images/hero-couple.png"
+  },
+  "story": {
+    "title": "Our Love Story",
+    "description": "From a chance encounter in Paris to a romantic sunset proposal on an Amalfi villa balcony, our journey has been blessed with love, deep laughter, and beautiful memories. We cannot wait to celebrate the beginning of our forever chapter surrounded by our cherished family and friends.",
+    "image": "/images/story-couple.png"
+  },
+  "events": [
+    {
+      "id": "welcome-dinner",
+      "title": "Sunset Welcome Soirée",
+      "date": "2026-11-27",
+      "time": "18:00 - 21:00",
+      "venue": "The Grand Terrace Lawn",
+      "address": "Villa Bella Vista, 100 Sunset Boulevard, Napa Valley, CA",
+      "mapUrl": "https://maps.google.com/?q=Villa+Bella+Vista+Napa+Valley",
+      "dressCode": "Cocktail Attire & Pastel Luxury",
+      "icon": "Sparkles"
+    },
+    {
+      "id": "wedding-ceremony",
+      "title": "Exchange of Vows",
+      "date": "2026-11-28",
+      "time": "16:00 - 17:30",
+      "venue": "The Crystal Glass Sanctuary",
+      "address": "Villa Bella Vista, 100 Sunset Boulevard, Napa Valley, CA",
+      "mapUrl": "https://maps.google.com/?q=Villa+Bella+Vista+Napa+Valley",
+      "dressCode": "Black Tie Optional / Formal Elegance",
+      "icon": "Church"
+    },
+    {
+      "id": "grand-reception",
+      "title": "Grand Gala Reception",
+      "date": "2026-11-28",
+      "time": "18:30 - Midnight",
+      "venue": "The Imperial Ballroom",
+      "address": "Villa Bella Vista, 100 Sunset Boulevard, Napa Valley, CA",
+      "mapUrl": "https://maps.google.com/?q=Villa+Bella+Vista+Napa+Valley",
+      "dressCode": "Black Tie Evening Wear",
+      "icon": "GlassWater"
+    }
+  ],
+  "gallery": [
+    {
+      "url": "/images/gallery-1.png",
+      "caption": "Sunset Proposal on Villa Balcony"
+    },
+    {
+      "url": "/images/gallery-2.png",
+      "caption": "Emerald & Gold Reception Table Design"
+    },
+    {
+      "url": "/images/gallery-3.png",
+      "caption": "Dancing Under Warm Estate Fairy Lights"
+    },
+    {
+      "url": "/images/gallery-4.png",
+      "caption": "Cherished Vows & Diamond Ring Details"
+    },
+    {
+      "url": "/images/hero-couple.png",
+      "caption": "Sophia & Alexander in Bespoke Wedding Attire"
+    },
+    {
+      "url": "/images/story-couple.png",
+      "caption": "Strolling Paris Cobblestone Streets Together"
+    }
+  ],
+  "audio": {
+    "backgroundMusicUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3",
+    "title": "Soft Piano Romance - Wedding Waltz"
+  },
+  "rsvp": {
+    "whatsappNumber": "15551234567",
+    "defaultMessage": "Hello! I am confirming my RSVP for Sophia & Alexander's Wedding."
+  }
+}
