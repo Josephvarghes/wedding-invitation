@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Disc, Music, Volume2, VolumeX, Play, Pause } from 'lucide-react';
-import weddingData from '../config/weddingData.json';
+import { Disc, Music, Volume2, VolumeX, Play } from 'lucide-react';
+import defaultWeddingData from '../config/weddingData.json';
 
-export default function AudioPlayer({ isPlaying, setIsPlaying }) {
+export default function AudioPlayer({ isPlaying, setIsPlaying, weddingData = defaultWeddingData }) {
+  const data = weddingData || defaultWeddingData;
   const audioRef = useRef(null);
   const [isMuted, setIsMuted] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  const audioUrl = weddingData.audio?.backgroundMusicUrl;
-  const audioTitle = weddingData.audio?.title || "Background Music";
+  const audioUrl = data.audio?.backgroundMusicUrl;
+  const audioTitle = data.audio?.title || "Background Music";
 
   useEffect(() => {
     if (audioRef.current) {
@@ -22,7 +23,7 @@ export default function AudioPlayer({ isPlaying, setIsPlaying }) {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, setIsPlaying]);
+  }, [isPlaying, setIsPlaying, audioUrl]);
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -63,12 +64,14 @@ export default function AudioPlayer({ isPlaying, setIsPlaying }) {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="relative group flex items-center bg-[#1B3B2B]/95 text-[#FAF7F2] p-2 pr-4 rounded-full border border-[#D4AF37]/50 shadow-[0_10px_25px_rgba(0,0,0,0.3)] backdrop-blur-md"
+        className="relative group flex items-center p-2 pr-4 rounded-full border shadow-2xl backdrop-blur-md"
+        style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-accent)', color: 'var(--text-light)' }}
       >
         <button
           onClick={togglePlay}
           aria-label="Toggle Background Music"
-          className="relative flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#F3E5AB] text-[#1B3B2B] shadow-md focus:outline-none cursor-pointer"
+          className="relative flex items-center justify-center w-11 h-11 rounded-full shadow-md focus:outline-none cursor-pointer"
+          style={{ backgroundColor: 'var(--accent)', color: 'var(--bg-dark)' }}
         >
           <motion.div
             animate={{ rotate: isPlaying ? 360 : 0 }}
@@ -86,11 +89,11 @@ export default function AudioPlayer({ isPlaying, setIsPlaying }) {
 
         {/* Music Title Info */}
         <div className="ml-3 hidden sm:flex flex-col text-left pr-1 max-w-[130px]">
-          <span className="text-[10px] uppercase tracking-wider text-[#D4AF37] font-semibold flex items-center gap-1">
+          <span className="text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1" style={{ color: 'var(--accent)' }}>
             <Music className="w-3 h-3 animate-pulse" />
             {isPlaying ? 'Now Playing' : 'Music Paused'}
           </span>
-          <span className="text-xs font-serif truncate text-[#FAF7F2]/90">
+          <span className="text-xs font-serif truncate opacity-90">
             {audioTitle}
           </span>
         </div>
@@ -98,7 +101,8 @@ export default function AudioPlayer({ isPlaying, setIsPlaying }) {
         {/* Mute Toggle Icon */}
         <button
           onClick={toggleMute}
-          className="ml-2 text-[#D4AF37]/80 hover:text-[#D4AF37] p-1 transition-colors cursor-pointer"
+          className="ml-2 opacity-80 hover:opacity-100 p-1 transition-opacity cursor-pointer"
+          style={{ color: 'var(--accent)' }}
           title={isMuted ? "Unmute" : "Mute"}
         >
           {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}

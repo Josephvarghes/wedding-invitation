@@ -1,0 +1,67 @@
+{
+  "themeId": "pastel-floral",
+  "themeName": "Pastel Floral & Rose Gold",
+  "couple": {
+    "bride": "Isabella Rose",
+    "groom": "Julian Montgomery",
+    "tagline": "Two hearts blooming into one forever story",
+    "date": "2026-10-15T15:30:00",
+    "heroImage": "/images/pastel-hero.png"
+  },
+  "story": {
+    "title": "A Blooming Love Story",
+    "description": "Our paths crossed beneath the cherry blossoms in Kyoto. From endless coffee shop laughter to a quiet proposal amidst thousands of wild lavender blooms, our love has grown naturally and beautifully into this dream celebration.",
+    "image": "/images/pastel-hero.png"
+  },
+  "events": [
+    {
+      "id": "high-tea",
+      "title": "Garden High Tea & Welcome",
+      "date": "2026-10-14",
+      "time": "15:00 - 18:00",
+      "venue": "The Rosewood Conservatory",
+      "address": "Rosewood Estate, 45 Garden Lane, Cotswolds, UK",
+      "mapUrl": "https://maps.google.com/?q=Rosewood+Estate+Cotswolds",
+      "dressCode": "Floral Dresses & Pastel Linen Suits",
+      "icon": "Sparkles"
+    },
+    {
+      "id": "matrimony",
+      "title": "Outdoor Botanical Matrimony",
+      "date": "2026-10-15",
+      "time": "15:30 - 17:00",
+      "venue": "The Sunlit Wisteria Arbor",
+      "address": "Rosewood Estate, 45 Garden Lane, Cotswolds, UK",
+      "mapUrl": "https://maps.google.com/?q=Rosewood+Estate+Cotswolds",
+      "dressCode": "Garden Party Romantic Formal",
+      "icon": "Church"
+    },
+    {
+      "id": "twilight-dinner",
+      "title": "Twilight Garden Dinner & Dance",
+      "date": "2026-10-15",
+      "time": "18:00 - Midnight",
+      "venue": "The Glasshouse Pavilion",
+      "address": "Rosewood Estate, 45 Garden Lane, Cotswolds, UK",
+      "mapUrl": "https://maps.google.com/?q=Rosewood+Estate+Cotswolds",
+      "dressCode": "Ethereal Evening Elegance",
+      "icon": "PartyPopper"
+    }
+  ],
+  "gallery": [
+    { "url": "/images/pastel-hero.png", "caption": "Julian & Isabella in the Rosewood Estate Gardens" },
+    { "url": "/images/gallery-1.png", "caption": "Sunset Moments by the Coastal Villa" },
+    { "url": "/images/gallery-3.png", "caption": "Dancing Under Warm Fairy Lights" },
+    { "url": "/images/gallery-4.png", "caption": "Rose Gold Ring & Delicate Botanical Lace Details" },
+    { "url": "/images/gallery-2.png", "caption": "Pastel Floral Reception Table Styling" },
+    { "url": "/images/story-couple.png", "caption": "Strolling Hand in Hand Through European Courtyards" }
+  ],
+  "audio": {
+    "backgroundMusicUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3",
+    "title": "Acoustic Garden Romance - Rose Melody"
+  },
+  "rsvp": {
+    "whatsappNumber": "15551234567",
+    "defaultMessage": "Hello! I am confirming my RSVP for Isabella & Julian's Garden Wedding."
+  }
+}

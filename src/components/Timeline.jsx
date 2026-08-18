@@ -11,7 +11,7 @@ import {
   PartyPopper,
   Shirt
 } from 'lucide-react';
-import weddingData from '../config/weddingData.json';
+import defaultWeddingData from '../config/weddingData.json';
 
 const iconMap = {
   Sparkles: Sparkles,
@@ -21,57 +21,22 @@ const iconMap = {
   Calendar: Calendar
 };
 
-export default function Timeline() {
-  const events = weddingData.events || [];
+export default function Timeline({ weddingData = defaultWeddingData }) {
+  const data = weddingData || defaultWeddingData;
+  const events = data.events || [];
 
-  // Helper to generate Google Calendar link
   const generateGoogleCalendarUrl = (event) => {
-    const title = encodeURIComponent(`${weddingData.couple.bride} & ${weddingData.couple.groom} - ${event.title}`);
+    const title = encodeURIComponent(`${data.couple.bride} & ${data.couple.groom} - ${event.title}`);
     const details = encodeURIComponent(`Dress Code: ${event.dressCode}\nVenue: ${event.venue}\nAddress: ${event.address}`);
     const location = encodeURIComponent(`${event.venue}, ${event.address}`);
-    
-    // Parse date & time string roughly for calendar ISO
     const dateStr = event.date.replace(/-/g, '');
-    const startTime = '160000Z'; // fallback default
-    const endTime = '220000Z';
-
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dateStr}T${startTime}/${dateStr}T${endTime}`;
-  };
-
-  // Helper to trigger .ics file download for Apple / Outlook calendar
-  const downloadIcs = (event) => {
-    const title = `${weddingData.couple.bride} & ${weddingData.couple.groom} - ${event.title}`;
-    const description = `Dress Code: ${event.dressCode}\\nVenue: ${event.venue}\\nAddress: ${event.address}`;
-    const location = `${event.venue}, ${event.address}`;
-    const dateFormatted = event.date.replace(/-/g, '');
-
-    const icsContent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Luxury Wedding Invitation//EN',
-      'BEGIN:VEVENT',
-      `SUMMARY:${title}`,
-      `DESCRIPTION:${description}`,
-      `LOCATION:${location}`,
-      `DTSTART:${dateFormatted}T160000Z`,
-      `DTEND:${dateFormatted}T220000Z`,
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', `${event.title.toLowerCase().replace(/\s+/g, '-')}.ics`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dateStr}T160000Z/${dateStr}T220000Z`;
   };
 
   return (
-    <section id="events" className="py-24 px-4 bg-[#122B1E] text-[#FAF7F2] relative overflow-hidden">
-      {/* Background Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-[150px] pointer-events-none" />
+    <section id="events" className="py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-light)' }}>
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] pointer-events-none" style={{ backgroundColor: 'var(--theme-glow)' }} />
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section Header */}
@@ -82,13 +47,13 @@ export default function Timeline() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-[#D4AF37] font-semibold mb-2">
+          <p className="text-xs uppercase tracking-[0.3em] font-semibold mb-2" style={{ color: 'var(--accent)' }}>
             Wedding Itinerary
           </p>
-          <h2 className="text-4xl sm:text-5xl font-serif font-bold text-[#FAF7F2]">
+          <h2 className="text-4xl sm:text-5xl font-serif font-bold" style={{ color: 'var(--text-light)' }}>
             Celebration Schedule
           </h2>
-          <div className="w-20 h-0.5 bg-[#D4AF37] mx-auto mt-4" />
+          <div className="w-20 h-0.5 mx-auto mt-4" style={{ backgroundColor: 'var(--accent)' }} />
         </motion.div>
 
         {/* Timeline Cards */}
@@ -103,40 +68,41 @@ export default function Timeline() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.2 }}
-                className="bg-[#1B3B2B]/90 border border-[#D4AF37]/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md shadow-[0_15px_30px_rgba(0,0,0,0.3)] hover:border-[#D4AF37] transition-all duration-300 group"
+                className="border rounded-2xl p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md shadow-xl hover:border-current transition-all duration-300 group"
+                style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-accent)' }}
               >
                 <div>
                   {/* Top Icon Badge */}
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#D4AF37] to-[#F3E5AB] text-[#122B1E] flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'var(--accent)', color: 'var(--bg-dark)' }}>
                     <IconComponent className="w-7 h-7" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-serif text-[#FAF7F2] font-semibold mb-4 leading-tight">
+                  <h3 className="text-2xl font-serif font-semibold mb-4 leading-tight" style={{ color: 'var(--text-light)' }}>
                     {event.title}
                   </h3>
 
                   {/* Event Details List */}
-                  <div className="space-y-3 text-sm text-[#FAF7F2]/80 mb-6">
+                  <div className="space-y-3 text-sm mb-6 opacity-90">
                     <div className="flex items-center gap-3">
-                      <Calendar className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <Calendar className="w-4 h-4 shrink-0" style={{ color: 'var(--accent)' }} />
                       <span>{event.date}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Clock className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <Clock className="w-4 h-4 shrink-0" style={{ color: 'var(--accent)' }} />
                       <span>{event.time}</span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-1" />
+                      <MapPin className="w-4 h-4 shrink-0 mt-1" style={{ color: 'var(--accent)' }} />
                       <div>
-                        <div className="font-semibold text-[#FAF7F2]">{event.venue}</div>
-                        <div className="text-xs text-[#FAF7F2]/60">{event.address}</div>
+                        <div className="font-semibold" style={{ color: 'var(--text-light)' }}>{event.venue}</div>
+                        <div className="text-xs opacity-70">{event.address}</div>
                       </div>
                     </div>
                     {event.dressCode && (
-                      <div className="flex items-center gap-3 pt-2 border-t border-[#D4AF37]/20">
-                        <Shirt className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                        <span className="text-xs italic text-[#D4AF37]">
+                      <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                        <Shirt className="w-4 h-4 shrink-0" style={{ color: 'var(--accent)' }} />
+                        <span className="text-xs italic" style={{ color: 'var(--accent)' }}>
                           Dress Code: {event.dressCode}
                         </span>
                       </div>
@@ -144,13 +110,14 @@ export default function Timeline() {
                   </div>
                 </div>
 
-                {/* Actions: Map & Calendar */}
-                <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t border-[#D4AF37]/30 mt-4">
+                {/* Actions */}
+                <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t border-white/10 mt-4">
                   <a
                     href={event.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-[#D4AF37]/20 hover:bg-[#D4AF37] text-[#FAF7F2] hover:text-[#122B1E] text-xs font-semibold rounded-lg transition-colors border border-[#D4AF37]/40 cursor-pointer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-colors border cursor-pointer"
+                    style={{ backgroundColor: 'var(--accent)', color: 'var(--bg-dark)', borderColor: 'var(--accent)' }}
                   >
                     <MapPin className="w-3.5 h-3.5" />
                     <span>Google Maps</span>
@@ -159,7 +126,8 @@ export default function Timeline() {
 
                   <button
                     onClick={() => window.open(generateGoogleCalendarUrl(event), '_blank')}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-transparent hover:bg-[#D4AF37]/20 text-[#D4AF37] text-xs font-semibold rounded-lg transition-colors border border-[#D4AF37]/40 cursor-pointer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-colors border cursor-pointer"
+                    style={{ backgroundColor: 'transparent', color: 'var(--accent)', borderColor: 'var(--border-accent)' }}
                   >
                     <Calendar className="w-3.5 h-3.5" />
                     <span>Add Calendar</span>

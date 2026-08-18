@@ -1,23 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Share2, ArrowUp } from 'lucide-react';
-import weddingData from '../config/weddingData.json';
+import defaultWeddingData from '../config/weddingData.json';
 
-export default function Footer() {
+export default function Footer({ weddingData = defaultWeddingData }) {
+  const data = weddingData || defaultWeddingData;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleShareWhatsApp = () => {
-    const shareText = `You are cordially invited to the wedding celebration of ${weddingData.couple.bride} & ${weddingData.couple.groom}! View full details & RSVP here: ${window.location.href}`;
+    const shareText = `You are cordially invited to the wedding celebration of ${data.couple.bride} & ${data.couple.groom}! View full details & RSVP here: ${window.location.href}`;
     const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
     window.open(whatsappShareUrl, '_blank');
   };
 
   return (
-    <footer className="bg-[#122B1E] text-[#FAF7F2] py-16 px-4 border-t border-[#D4AF37]/30 relative overflow-hidden">
+    <footer className="py-16 px-4 border-t relative overflow-hidden" style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-light)', borderColor: 'var(--border-accent)' }}>
       {/* Glow background */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: 'var(--theme-glow)' }} />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Monogram */}
@@ -26,17 +28,18 @@ export default function Footer() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1B3B2B] text-[#D4AF37] border-2 border-[#D4AF37] mb-6 shadow-md"
+          className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 mb-6 shadow-md"
+          style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--accent)', color: 'var(--accent)' }}
         >
-          <Heart className="w-7 h-7 text-[#D4AF37] fill-[#D4AF37]/30" />
+          <Heart className="w-7 h-7 fill-current" />
         </motion.div>
 
         {/* Closing Title */}
-        <h3 className="text-3xl sm:text-4xl font-serif text-[#FAF7F2] font-bold mb-3">
-          {weddingData.couple.bride} & {weddingData.couple.groom}
+        <h3 className="text-3xl sm:text-4xl font-serif font-bold mb-3" style={{ color: 'var(--text-light)' }}>
+          {data.couple.bride} & {data.couple.groom}
         </h3>
 
-        <p className="text-sm font-serif italic text-[#D4AF37] max-w-md mx-auto mb-8">
+        <p className="text-sm font-serif italic max-w-md mx-auto mb-8" style={{ color: 'var(--accent)' }}>
           "With love and joyful anticipation, we look forward to celebrating our special day with you."
         </p>
 
@@ -44,7 +47,8 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
           <button
             onClick={handleShareWhatsApp}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#254E3A] hover:bg-[#D4AF37] text-[#FAF7F2] hover:text-[#122B1E] font-semibold text-xs uppercase tracking-wider rounded-full border border-[#D4AF37]/50 transition-all duration-300 shadow-md cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-xs uppercase tracking-wider rounded-full border transition-all duration-300 shadow-md cursor-pointer"
+            style={{ backgroundColor: 'var(--accent)', color: 'var(--bg-dark)', borderColor: 'var(--accent)' }}
           >
             <Share2 className="w-4 h-4" />
             <span>Share Invitation via WhatsApp</span>
@@ -52,7 +56,8 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 px-4 py-3 bg-transparent hover:bg-white/10 text-[#D4AF37] font-semibold text-xs uppercase tracking-wider rounded-full border border-[#D4AF37]/40 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-3 bg-transparent font-semibold text-xs uppercase tracking-wider rounded-full border transition-all duration-300 cursor-pointer"
+            style={{ color: 'var(--accent)', borderColor: 'var(--border-accent)' }}
           >
             <ArrowUp className="w-4 h-4" />
             <span>Back to Top</span>
@@ -60,8 +65,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright / Credit */}
-        <div className="pt-8 border-t border-[#FAF7F2]/10 text-xs text-[#FAF7F2]/60 font-sans tracking-wide">
-          © {new Date().getFullYear()} {weddingData.couple.bride} & {weddingData.couple.groom}'s Wedding. All Rights Reserved.
+        <div className="pt-8 border-t border-white/10 text-xs font-sans tracking-wide opacity-60">
+          © {new Date().getFullYear()} {data.couple.bride} & {data.couple.groom}'s Wedding. All Rights Reserved.
         </div>
       </div>
     </footer>

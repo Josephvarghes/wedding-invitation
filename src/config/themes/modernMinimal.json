@@ -1,0 +1,67 @@
+{
+  "themeId": "modern-minimal",
+  "themeName": "Modern Minimalist & Slate",
+  "couple": {
+    "bride": "Elena Rostova",
+    "groom": "Marcus Thorne",
+    "tagline": "Architects of our own forever",
+    "date": "2026-12-12T17:00:00",
+    "heroImage": "/images/minimal-hero.png"
+  },
+  "story": {
+    "title": "Clean Lines & Deep Love",
+    "description": "Met at an architectural gallery in Manhattan. From minimalist coffee dates to a serene proposal at sunrise overlooking the skyline, our relationship has always been grounded in intentional simplicity, quiet elegance, and true connection.",
+    "image": "/images/minimal-hero.png"
+  },
+  "events": [
+    {
+      "id": "cocktails",
+      "title": "Skyline Cocktail Hour",
+      "date": "2026-12-11",
+      "time": "19:00 - 22:00",
+      "venue": "Penthouse Loft 88",
+      "address": "88 Hudson Street, Tribeca, New York, NY",
+      "mapUrl": "https://maps.google.com/?q=88+Hudson+Street+New+York",
+      "dressCode": "Monochrome Chic & Contemporary Formal",
+      "icon": "GlassWater"
+    },
+    {
+      "id": "ceremony",
+      "title": "Minimalist Vow Exchange",
+      "date": "2026-12-12",
+      "time": "17:00 - 18:00",
+      "venue": "The Onyx Atrium",
+      "address": "88 Hudson Street, Tribeca, New York, NY",
+      "mapUrl": "https://maps.google.com/?q=88+Hudson+Street+New+York",
+      "dressCode": "Modern Black Tie / Architectural Chic",
+      "icon": "Church"
+    },
+    {
+      "id": "gala",
+      "title": "Contemporary Gala & Afterparty",
+      "date": "2026-12-12",
+      "time": "18:30 - Late",
+      "venue": "The Glass Pavilion & Gallery",
+      "address": "88 Hudson Street, Tribeca, New York, NY",
+      "mapUrl": "https://maps.google.com/?q=88+Hudson+Street+New+York",
+      "dressCode": "Avant-Garde Evening Wear",
+      "icon": "PartyPopper"
+    }
+  ],
+  "gallery": [
+    { "url": "/images/minimal-hero.png", "caption": "Marcus & Elena at Penthouse Loft 88" },
+    { "url": "/images/gallery-4.png", "caption": "Clean Diamond Ring & Architectural Details" },
+    { "url": "/images/gallery-2.png", "caption": "Monochrome Table Design & Crystal Detail" },
+    { "url": "/images/gallery-1.png", "caption": "Sunset Views Over Manhattan Skyline" },
+    { "url": "/images/hero-couple.png", "caption": "Elena & Marcus in Bespoke Couture Attire" },
+    { "url": "/images/gallery-3.png", "caption": "Late Night Evening Celebration" }
+  ],
+  "audio": {
+    "backgroundMusicUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3",
+    "title": "Modern Piano Minimalist Ambient"
+  },
+  "rsvp": {
+    "whatsappNumber": "15551234567",
+    "defaultMessage": "Hello! I am confirming my RSVP for Elena & Marcus's Modern Wedding."
+  }
+}
